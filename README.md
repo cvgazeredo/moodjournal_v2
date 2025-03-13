@@ -1,24 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MoodJournal
+
+A modern web application for tracking emotional well-being and mental health. Built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 📝 Daily mood tracking and journaling
+- 📊 Analytics and mood patterns visualization
+- 🎯 Goal setting and tracking
+- 📅 Calendar view for mood history
+- 🌓 Dark/Light mode support
+- 🔐 Secure authentication with NextAuth.js
+- 💾 Data persistence with Prisma and PostgreSQL
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Shadcn UI](https://ui.shadcn.com/) - UI components
+- [NextAuth.js](https://next-auth.js.org/) - Authentication
+- [Prisma](https://www.prisma.io/) - Database ORM
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [Neon](https://neon.tech/) - Serverless Postgres
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/cvgazeredo/moodjournal_v2.git
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+   ```bash
+   cd moodjournal_v2
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Fill in your environment variables in `.env`
+
+4. Run database migrations:
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                 # App router pages
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── sections/       # Landing page sections
+│   └── dashboard/      # Dashboard components
+├── lib/                # Utility functions
+└── styles/             # Global styles
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Learn More
 
