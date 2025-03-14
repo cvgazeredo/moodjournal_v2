@@ -3,6 +3,8 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
+import { cookies } from 'next/headers';
+import { verify } from 'jsonwebtoken';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -71,4 +73,45 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-}; 
+};
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+
+export type Session = {
+  user: {
+    id: string;
+    email: string;
+    name?: string;
+  } | null;
+};
+
+export async function auth(): Promise<Session> {
+  try {
+    const cookieStore = cookies();
+    const token = cookieStore.get('token')?.value;
+
+    if (!token) {
+      return { user: null };
+    }
+
+    const decoded = verify(token, JWT_SECRET) as { id: string; email: string };
+
+    const user = await db.user.findUnique({
+      where: { id: decoded.id },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+      },
+    });
+
+    if (!user) {
+      return { user: null };
+    }
+
+    return { user };
+  } catch (error) {
+    console.error('Auth error:', error);
+    return { user: null };
+  }
+} 

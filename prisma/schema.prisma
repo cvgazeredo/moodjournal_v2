@@ -20,4 +20,63 @@ model User {
   password      String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  dailyEntries  DailyEntry[]
+}
+
+model DailyEntry {
+  id        String   @id @default(cuid())
+  date      DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  mood      Mood     @relation(fields: [moodId], references: [id])
+  moodId    String   @unique
+  sleep     Sleep    @relation(fields: [sleepId], references: [id])
+  sleepId   String   @unique
+  exercise  Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId String  @unique
+  diet      Diet     @relation(fields: [dietId], references: [id])
+  dietId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([date])
+}
+
+model Mood {
+  id        String     @id @default(cuid())
+  rating    Int
+  notes     String?
+  entry     DailyEntry?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Sleep {
+  id        String     @id @default(cuid())
+  hours     Int
+  quality   Int
+  entry     DailyEntry?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Exercise {
+  id          String     @id @default(cuid())
+  didExercise String
+  type        String?
+  duration    Int?
+  entry       DailyEntry?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Diet {
+  id          String     @id @default(cuid())
+  rating      Int
+  foodChoices String[]
+  waterIntake String
+  entry       DailyEntry?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }

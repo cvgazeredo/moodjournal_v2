@@ -11,6 +11,7 @@ import {
   BookOpen,
   Target,
   User,
+  PenLine,
 } from "lucide-react";
 
 const navigation = [
@@ -18,6 +19,11 @@ const navigation = [
     name: "Dashboard",
     href: "/dashboard",
     icon: Home
+  },
+  {
+    name: "Daily Entry",
+    href: "/dashboard/daily-entry",
+    icon: PenLine
   },
   {
     name: "Journal",
