@@ -8,12 +8,13 @@ import { DietSection } from '@/components/daily-entry/DietSection';
 import { DailyEntryData } from '@/types/daily-entry';
 import { Progress } from "@/components/ui/progress";
 import { Container } from "@/components/ui/container";
-import { Smile, BicepsFlexed, Bed, Salad, Zap } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { Smile, BicepsFlexed, Bed, Salad, Zap, Loader2 } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from 'sonner';
 import { useSession } from 'next-auth/react';
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { getDailyEntryById, getTodayEntryId } from '@/lib/daily-entry';
 
 const steps = [
   {
@@ -79,7 +80,12 @@ export default function DailyEntry() {
   const [data, setData] = useState<DailyEntryData>(initialData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isQuickEntry, setIsQuickEntry] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+  const [entryId, setEntryId] = useState<string | null>(null);
+  
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -88,6 +94,59 @@ export default function DailyEntry() {
       toast.error('Please log in to continue');
     }
   }, [status, router]);
+  
+  // Check if we're editing an entry
+  useEffect(() => {
+    async function checkForExistingEntry() {
+      try {
+        setIsLoading(true);
+        
+        // First check if an ID was passed in the URL
+        const idParam = searchParams.get('id');
+        
+        if (idParam) {
+          // If ID is provided in URL, fetch that specific entry
+          const entryData = await getDailyEntryById(idParam);
+          if (entryData) {
+            setData(entryData);
+            setEntryId(idParam);
+            setIsEditing(true);
+            
+            // If any sections are null, it might be a quick entry
+            if (!entryData.sleep || !entryData.exercise || !entryData.diet) {
+              setIsQuickEntry(true);
+            }
+          }
+        } else {
+          // Otherwise, check if we have an entry for today
+          const todayEntryId = await getTodayEntryId();
+          
+          if (todayEntryId) {
+            const todayEntry = await getDailyEntryById(todayEntryId);
+            if (todayEntry) {
+              setData(todayEntry);
+              setEntryId(todayEntryId);
+              setIsEditing(true);
+              
+              // If any sections are null, it might be a quick entry
+              if (!todayEntry.sleep || !todayEntry.exercise || !todayEntry.diet) {
+                setIsQuickEntry(true);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error loading entry:", error);
+        toast.error("Failed to load entry data. Starting with a new entry.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    
+    if (status === 'authenticated') {
+      checkForExistingEntry();
+    }
+  }, [status, searchParams]);
 
   const progress = ((currentStep + 1) / steps.length) * 100;
 
@@ -108,8 +167,13 @@ export default function DailyEntry() {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      const response = await fetch('/api/daily-entry', {
-        method: 'POST',
+      
+      // If we're editing an existing entry, use PUT instead of POST
+      const method = isEditing ? 'PUT' : 'POST';
+      const url = isEditing ? `/api/daily-entry/${entryId}` : '/api/daily-entry';
+      
+      const response = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -118,16 +182,16 @@ export default function DailyEntry() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit daily entry');
+        throw new Error(errorData.error || `Failed to ${isEditing ? 'update' : 'submit'} daily entry`);
       }
 
       const result = await response.json();
-      console.log('Daily entry submitted:', result);
+      console.log(`Daily entry ${isEditing ? 'updated' : 'submitted'}:`, result);
 
-      toast.success('Your daily entry has been recorded');
+      toast.success(`Your daily entry has been ${isEditing ? 'updated' : 'recorded'}`);
       router.push('/dashboard');
     } catch (error) {
-      console.error('Error submitting daily entry:', error);
+      console.error(`Error ${isEditing ? 'updating' : 'submitting'} daily entry:`, error);
       if (error instanceof Error) {
         if (error.message.includes('Unauthorized')) {
           toast.error('Session expired. Please log in again.');
@@ -136,7 +200,7 @@ export default function DailyEntry() {
           toast.error(error.message);
         }
       } else {
-        toast.error('Failed to submit your daily entry. Please try again.');
+        toast.error(`Failed to ${isEditing ? 'update' : 'submit'} your daily entry. Please try again.`);
       }
     } finally {
       setIsSubmitting(false);
@@ -147,18 +211,37 @@ export default function DailyEntry() {
     setIsQuickEntry(checked);
     if (checked) {
       setCurrentStep(0); // Reset to mood section
-      // Set other sections to null for quick entry
-      setData(prev => ({
-        mood: prev.mood,
-        ...nullValues,
-        date: prev.date
-      }));
+      // If editing, preserve the existing mood data and set other sections to null
+      if (isEditing) {
+        setData(prev => ({
+          mood: prev.mood,
+          ...nullValues,
+          date: prev.date
+        }));
+      } else {
+        // For new entries, set other sections to null for quick entry
+        setData(prev => ({
+          mood: prev.mood,
+          ...nullValues,
+          date: prev.date
+        }));
+      }
     } else {
       // Restore default values when switching back to full entry
-      setData(prev => ({
-        ...prev,
-        ...fullEntryDefaults
-      }));
+      // If editing, preserve any existing data
+      if (isEditing) {
+        setData(prev => ({
+          ...prev,
+          sleep: prev.sleep || fullEntryDefaults.sleep,
+          exercise: prev.exercise || fullEntryDefaults.exercise,
+          diet: prev.diet || fullEntryDefaults.diet
+        }));
+      } else {
+        setData(prev => ({
+          ...prev,
+          ...fullEntryDefaults
+        }));
+      }
     }
   };
 
@@ -170,8 +253,13 @@ export default function DailyEntry() {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch('/api/daily-entry', {
-        method: 'POST',
+      
+      // If we're editing an existing entry, use PUT instead of POST
+      const method = isEditing ? 'PUT' : 'POST';
+      const url = isEditing ? `/api/daily-entry/${entryId}` : '/api/daily-entry';
+      
+      const response = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -184,16 +272,16 @@ export default function DailyEntry() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit daily entry');
+        throw new Error(errorData.error || `Failed to ${isEditing ? 'update' : 'submit'} daily entry`);
       }
 
       const result = await response.json();
-      console.log('Quick entry submitted:', result);
+      console.log(`Quick entry ${isEditing ? 'updated' : 'submitted'}:`, result);
 
-      toast.success('Your quick entry has been recorded');
+      toast.success(`Your quick entry has been ${isEditing ? 'updated' : 'recorded'}`);
       router.push('/dashboard');
     } catch (error) {
-      console.error('Error submitting quick entry:', error);
+      console.error(`Error ${isEditing ? 'updating' : 'submitting'} quick entry:`, error);
       if (error instanceof Error) {
         if (error.message.includes('Unauthorized')) {
           toast.error('Session expired. Please log in again.');
@@ -202,7 +290,7 @@ export default function DailyEntry() {
           toast.error(error.message);
         }
       } else {
-        toast.error('Failed to submit your entry. Please try again.');
+        toast.error(`Failed to ${isEditing ? 'update' : 'submit'} your entry. Please try again.`);
       }
     } finally {
       setIsSubmitting(false);
@@ -212,12 +300,13 @@ export default function DailyEntry() {
   const CurrentStepIcon = steps[currentStep].icon;
 
   // Don't render anything while checking auth
-  if (status === 'loading') {
+  if (status === 'loading' || isLoading) {
     return (
       <div className="min-h-screen bg-background pt-20 pb-10">
         <Container>
-          <div className="flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p className="text-muted-foreground">Loading your entry...</p>
           </div>
         </Container>
       </div>
@@ -236,9 +325,14 @@ export default function DailyEntry() {
           <div className="grid gap-6">
             {/* Header */}
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold tracking-tight">Daily Check-in</h1>
+              <h1 className="text-3xl font-bold tracking-tight">
+                {isEditing ? 'Edit Your Daily Check-in' : 'Daily Check-in'}
+              </h1>
               <p className="text-muted-foreground">
-                Track your well-being journey, one day at a time
+                {isEditing 
+                  ? 'Update your well-being record for today'
+                  : 'Track your well-being journey, one day at a time'
+                }
               </p>
             </div>
 

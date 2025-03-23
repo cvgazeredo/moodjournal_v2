@@ -6,12 +6,17 @@ import { MoodChart } from "@/components/dashboard/MoodChart";
 import { MoodStats } from "@/components/dashboard/MoodStats";
 import { RecentEntries } from "@/components/dashboard/RecentEntries";
 import { MonthlyMoodTarget } from "@/components/dashboard/MonthlyMoodTarget";
+import { WelcomeMessage } from "@/components/dashboard/WelcomeMessage";
+import { NewEntryButton } from "@/components/dashboard/NewEntryButton";
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background pt-20 pb-10">
       <Container>
         <div className="grid gap-6">
+          {/* Welcome Message */}
+          <WelcomeMessage />
+          
           {/* Top Stats */}
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <MoodStats
@@ -68,6 +73,9 @@ export default function DashboardPage() {
           </Card>
         </div>
       </Container>
+      
+      {/* Floating action button for mobile */}
+      <NewEntryButton />
     </div>
   );
 } 

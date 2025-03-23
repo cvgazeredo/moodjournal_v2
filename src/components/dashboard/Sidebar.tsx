@@ -12,6 +12,8 @@ import {
   Target,
   User,
   PenLine,
+  LineChart,
+  CheckSquare,
 } from "lucide-react";
 
 const navigation = [
@@ -24,6 +26,16 @@ const navigation = [
     name: "Daily Entry",
     href: "/dashboard/daily-entry",
     icon: PenLine
+  },
+  {
+    name: "Weekly Tasks",
+    href: "/dashboard/tasks",
+    icon: CheckSquare
+  },
+  {
+    name: "Statistics",
+    href: "/dashboard/statistics",
+    icon: LineChart
   },
   {
     name: "Journal",

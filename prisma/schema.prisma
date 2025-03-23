@@ -21,6 +21,7 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   dailyEntries  DailyEntry[]
+  taskBoards    TaskBoard[]
 }
 
 model DailyEntry {
@@ -79,4 +80,47 @@ model Diet {
   entry       DailyEntry?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+}
+
+// Task management models
+enum TaskStatus {
+  TODO
+  IN_PROGRESS 
+  DONE
+}
+
+enum TaskCategory {
+  WELLNESS_SELFCARE
+  SOCIAL_RELATIONSHIPS
+  PRODUCTIVITY_ORGANIZATION
+}
+
+model TaskBoard {
+  id          String    @id @default(cuid())
+  weekStartDate DateTime
+  weekEndDate  DateTime
+  userId       String
+  user         User      @relation(fields: [userId], references: [id])
+  tasks        Task[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([weekStartDate, weekEndDate])
+}
+
+model Task {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  status      TaskStatus   @default(TODO)
+  category    TaskCategory
+  order       Int          @default(0)
+  taskBoardId String
+  taskBoard   TaskBoard    @relation(fields: [taskBoardId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([taskBoardId])
+  @@index([status])
 }

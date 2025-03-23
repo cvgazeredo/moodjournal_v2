@@ -21,31 +21,31 @@ import { Switch } from "@/components/ui/switch"
 const moodOptions = [
   { 
     value: 1, 
-    icon: FrownIcon, 
+    image: "/emojis/sad.png", 
     color: "bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50",
     iconColor: "text-red-700 dark:text-red-400"
   },
   { 
     value: 2, 
-    icon: Frown, 
+    image: "/emojis/frown.png", 
     color: "bg-orange-100 dark:bg-orange-900/30 hover:bg-orange-200 dark:hover:bg-orange-900/50",
     iconColor: "text-orange-700 dark:text-orange-400"
   },
   { 
     value: 3, 
-    icon: MehIcon, 
+    image: "/emojis/meh.png", 
     color: "bg-yellow-100 dark:bg-yellow-900/30 hover:bg-yellow-200 dark:hover:bg-yellow-900/50",
     iconColor: "text-yellow-700 dark:text-yellow-400"
   },
   { 
     value: 4, 
-    icon: SmileIcon, 
+    image: "/emojis/smiling-face.png", 
     color: "bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50",
     iconColor: "text-green-700 dark:text-green-400"
   },
   { 
     value: 5, 
-    icon: Laugh, 
+    image: "/emojis/laugh.png", 
     color: "bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50",
     iconColor: "text-blue-700 dark:text-blue-400"
   },
@@ -92,13 +92,14 @@ export function MoodSection({ data, onChange, onNext, isLastStep }: SectionProps
                 )}
                 onClick={() => onChange({ ...data, rating: mood.value })}
               >
-                <mood.icon
-                  size={48} 
+                <img 
+                  src={mood.image} 
+                  alt={`Mood ${mood.value}`} 
                   className={cn(
-                    "w-10 h-10",
+                    "w-7 h-7",
                     data.rating === mood.value 
                       ? "text-primary dark:text-primary" 
-                      : mood.iconColor
+                      : ""
                   )}
                 />
               </Button>

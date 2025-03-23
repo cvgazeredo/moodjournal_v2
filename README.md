@@ -8,6 +8,7 @@ A modern web application for tracking emotional well-being and mental health. Bu
 - 📊 Analytics and mood patterns visualization
 - 🎯 Goal setting and tracking
 - 📅 Calendar view for mood history
+- 🌡️ Weather integration with personalized greetings
 - 🌓 Dark/Light mode support
 - 🔐 Secure authentication with NextAuth.js
 - 💾 Data persistence with Prisma and PostgreSQL
@@ -22,6 +23,7 @@ A modern web application for tracking emotional well-being and mental health. Bu
 - [Prisma](https://www.prisma.io/) - Database ORM
 - [PostgreSQL](https://www.postgresql.org/) - Database
 - [Neon](https://neon.tech/) - Serverless Postgres
+- [OpenWeather API](https://openweathermap.org/) - Weather data
 
 ## Getting Started
 
@@ -38,9 +40,9 @@ A modern web application for tracking emotional well-being and mental health. Bu
 
 3. Set up environment variables:
    ```bash
-   cp .env.example .env
+   cp .env.local.example .env.local
    ```
-   Fill in your environment variables in `.env`
+   Fill in your environment variables in `.env.local`, including your OpenWeather API key
 
 4. Run database migrations:
    ```bash
@@ -53,6 +55,15 @@ A modern web application for tracking emotional well-being and mental health. Bu
    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Setting Up OpenWeather API
+
+1. Register for a free API key at [OpenWeather](https://openweathermap.org/api).
+2. Add your API key to the `.env.local` file:
+   ```
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
+   ```
+3. The weather widget will automatically display weather based on the user's location after they grant permission.
 
 ## Project Structure
 

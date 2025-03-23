@@ -1,0 +1,729 @@
+[
+  {
+    "date": "2025-02-01",
+    "mood": {
+      "rating": 7,
+      "notes": "Had some good news that brightened my mood."
+    },
+    "sleep": {
+      "hours": 7.8,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Running",
+      "duration": 35
+    },
+    "diet": {
+      "rating": 3,
+      "foodChoices": [
+        "Dairy",
+        "Whole grains",
+        "Sweets",
+        "Coffee"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-02",
+    "mood": {
+      "rating": 6,
+      "notes": "Average day. Nothing special to report."
+    },
+    "sleep": {
+      "hours": 7.9,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 4,
+      "foodChoices": [
+        "Nuts",
+        "Vegetables",
+        "Sweets",
+        "Tea",
+        "Processed food"
+      ],
+      "waterIntake": "1l-1.5l"
+    }
+  },
+  {
+    "date": "2025-02-03",
+    "mood": {
+      "rating": 3,
+      "notes": "Feeling overwhelmed with responsibilities."
+    },
+    "sleep": {
+      "hours": 7.6,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Weightlifting",
+      "duration": 54
+    },
+    "diet": {
+      "rating": 8,
+      "foodChoices": [
+        "Dairy",
+        "Vegetables",
+        "Tea"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-04",
+    "mood": {
+      "rating": 4,
+      "notes": "Feeling okay but a bit tired."
+    },
+    "sleep": {
+      "hours": 7.4,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 7,
+      "foodChoices": [
+        "Vegetables",
+        "Fish"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-05",
+    "mood": {
+      "rating": 4,
+      "notes": "Slightly stressed but handling it."
+    },
+    "sleep": {
+      "hours": 7.5,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "HIIT",
+      "duration": 62
+    },
+    "diet": {
+      "rating": 7,
+      "foodChoices": [
+        "Vegetables",
+        "Dairy",
+        "Juice"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-06",
+    "mood": {
+      "rating": 5,
+      "notes": "Neutral mood. Just getting through the day."
+    },
+    "sleep": {
+      "hours": 7.3,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Weightlifting",
+      "duration": 25
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Vegetables",
+        "Coffee"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-07",
+    "mood": {
+      "rating": 6,
+      "notes": "Feeling okay but a bit tired."
+    },
+    "sleep": {
+      "hours": 6.5,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Swimming",
+      "duration": 64
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Whole grains",
+        "Fish",
+        "Dairy"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-08",
+    "mood": {
+      "rating": 8,
+      "notes": "Had some good news that brightened my mood."
+    },
+    "sleep": {
+      "hours": 7.7,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Dancing",
+      "duration": 62
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Lean protein",
+        "Whole grains",
+        "Juice"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-09",
+    "mood": {
+      "rating": 7,
+      "notes": "Productive day that left me feeling satisfied."
+    },
+    "sleep": {
+      "hours": 8.7,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 4,
+      "foodChoices": [
+        "Fruits",
+        "Lean protein",
+        "Alcohol",
+        "Sweets"
+      ],
+      "waterIntake": "1l-1.5l"
+    }
+  },
+  {
+    "date": "2025-02-10",
+    "mood": {
+      "rating": 5,
+      "notes": "Some ups and downs today, but managing."
+    },
+    "sleep": {
+      "hours": 6.7,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Swimming",
+      "duration": 69
+    },
+    "diet": {
+      "rating": 4,
+      "foodChoices": [
+        "Lean protein",
+        "Fish",
+        "Fruits",
+        "Alcohol"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-11",
+    "mood": {
+      "rating": 6,
+      "notes": "Slightly stressed but handling it."
+    },
+    "sleep": {
+      "hours": 6.8,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Swimming",
+      "duration": 52
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Dairy"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-12",
+    "mood": {
+      "rating": 5,
+      "notes": "Some ups and downs today, but managing."
+    },
+    "sleep": {
+      "hours": 6.3,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Fruits",
+        "Lean protein"
+      ],
+      "waterIntake": "less-than-1l"
+    }
+  },
+  {
+    "date": "2025-02-13",
+    "mood": {
+      "rating": 7,
+      "notes": "Productive day that left me feeling satisfied."
+    },
+    "sleep": {
+      "hours": 7.1,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Dancing",
+      "duration": 41
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Vegetables",
+        "Fish",
+        "Whole grains",
+        "Dairy"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-14",
+    "mood": {
+      "rating": 4,
+      "notes": "Average day. Nothing special to report."
+    },
+    "sleep": {
+      "hours": 6.9,
+      "quality": 7
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Running",
+      "duration": 78
+    },
+    "diet": {
+      "rating": 8,
+      "foodChoices": [
+        "Vegetables"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-15",
+    "mood": {
+      "rating": 7,
+      "notes": "Productive day that left me feeling satisfied."
+    },
+    "sleep": {
+      "hours": 7.6,
+      "quality": 7
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Juice",
+        "Fast food",
+        "Processed food"
+      ],
+      "waterIntake": "1l-1.5l"
+    }
+  },
+  {
+    "date": "2025-02-16",
+    "mood": {
+      "rating": 6,
+      "notes": "Average day. Nothing special to report."
+    },
+    "sleep": {
+      "hours": 8.3,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 4,
+      "foodChoices": [
+        "Fruits",
+        "Fast food",
+        "Sweets"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-17",
+    "mood": {
+      "rating": 5,
+      "notes": "Neutral mood. Just getting through the day."
+    },
+    "sleep": {
+      "hours": 7.3,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Walking",
+      "duration": 26
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Vegetables",
+        "Whole grains",
+        "Dairy",
+        "Fish"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  },
+  {
+    "date": "2025-02-18",
+    "mood": {
+      "rating": 7,
+      "notes": "Spent quality time with friends/family."
+    },
+    "sleep": {
+      "hours": 6,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Lean protein",
+        "Whole grains",
+        "Fruits"
+      ],
+      "waterIntake": "1l-1.5l"
+    }
+  },
+  {
+    "date": "2025-02-19",
+    "mood": {
+      "rating": 6,
+      "notes": "Some ups and downs today, but managing."
+    },
+    "sleep": {
+      "hours": 6.8,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Yoga",
+      "duration": 42
+    },
+    "diet": {
+      "rating": 4,
+      "foodChoices": [
+        "Nuts",
+        "Vegetables",
+        "Lean protein",
+        "Whole grains"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-20",
+    "mood": {
+      "rating": 6,
+      "notes": "Neutral mood. Just getting through the day."
+    },
+    "sleep": {
+      "hours": 7.5,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Dancing",
+      "duration": 55
+    },
+    "diet": {
+      "rating": 7,
+      "foodChoices": [
+        "Vegetables",
+        "Lean protein",
+        "Fish",
+        "Whole grains"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-21",
+    "mood": {
+      "rating": 3,
+      "notes": "Feeling overwhelmed with responsibilities."
+    },
+    "sleep": {
+      "hours": 6.5,
+      "quality": 3
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Fruits",
+        "Nuts",
+        "Dairy",
+        "Fish"
+      ],
+      "waterIntake": "less-than-1l"
+    }
+  },
+  {
+    "date": "2025-02-22",
+    "mood": {
+      "rating": 6,
+      "notes": "Neutral mood. Just getting through the day."
+    },
+    "sleep": {
+      "hours": 8.3,
+      "quality": 7
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Whole grains",
+        "Fast food",
+        "Processed food",
+        "Tea"
+      ],
+      "waterIntake": "less-than-1l"
+    }
+  },
+  {
+    "date": "2025-02-23",
+    "mood": {
+      "rating": 9,
+      "notes": "Spent quality time with friends/family."
+    },
+    "sleep": {
+      "hours": 7.6,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Dairy",
+        "Coffee"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-24",
+    "mood": {
+      "rating": 5,
+      "notes": "Some ups and downs today, but managing."
+    },
+    "sleep": {
+      "hours": 7.5,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "HIIT",
+      "duration": 71
+    },
+    "diet": {
+      "rating": 7,
+      "foodChoices": [
+        "Fruits",
+        "Lean protein",
+        "Fast food"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-25",
+    "mood": {
+      "rating": 6,
+      "notes": "Neutral mood. Just getting through the day."
+    },
+    "sleep": {
+      "hours": 7.8,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 6,
+      "foodChoices": [
+        "Vegetables",
+        "Fish",
+        "Soda"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-02-26",
+    "mood": {
+      "rating": 6,
+      "notes": "Feeling okay but a bit tired."
+    },
+    "sleep": {
+      "hours": 7.5,
+      "quality": 4
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Fish",
+        "Fruits",
+        "Dairy",
+        "Nuts"
+      ],
+      "waterIntake": "1l-1.5l"
+    }
+  },
+  {
+    "date": "2025-02-27",
+    "mood": {
+      "rating": 7,
+      "notes": "Productive day that left me feeling satisfied."
+    },
+    "sleep": {
+      "hours": 7.7,
+      "quality": 5
+    },
+    "exercise": {
+      "didExercise": "no",
+      "type": null,
+      "duration": null
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Vegetables",
+        "Juice"
+      ],
+      "waterIntake": "less-than-1l"
+    }
+  },
+  {
+    "date": "2025-02-28",
+    "mood": {
+      "rating": 3,
+      "notes": "Had an argument that put me in a bad mood."
+    },
+    "sleep": {
+      "hours": 6.6,
+      "quality": 3
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Cycling",
+      "duration": 30
+    },
+    "diet": {
+      "rating": 5,
+      "foodChoices": [
+        "Vegetables"
+      ],
+      "waterIntake": "1.5l-2l"
+    }
+  },
+  {
+    "date": "2025-03-01",
+    "mood": {
+      "rating": 6,
+      "notes": "Feeling okay but a bit tired."
+    },
+    "sleep": {
+      "hours": 7.6,
+      "quality": 6
+    },
+    "exercise": {
+      "didExercise": "yes",
+      "type": "Running",
+      "duration": 42
+    },
+    "diet": {
+      "rating": 2,
+      "foodChoices": [
+        "Fruits",
+        "Sweets",
+        "Alcohol",
+        "Juice"
+      ],
+      "waterIntake": "2l-plus"
+    }
+  }
+]
